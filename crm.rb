@@ -3,8 +3,6 @@ require_relative 'contact'
 class CRM
 
   def initialize
-
-
   end
 
   def main_menu
@@ -83,7 +81,9 @@ def search_by_attribute
 end
 
 end
-
-crm = CRM.new
-
-crm.main_menu
+at_exit do
+  ActiveRecord::Base.connection.close
+end
+# crm = CRM.new
+#
+# crm.main_menu
