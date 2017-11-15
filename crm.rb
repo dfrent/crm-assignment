@@ -43,7 +43,10 @@ class CRM
   email = gets.chomp
     puts "please enter notes"
   notes = gets.chomp
-  Contact.create(first_name, last_name, email, notes)
+  Contact.create( first_name: first_name,
+    last_name:  last_name,
+    email:      email,
+    notes:       notes)
 
 end
 
@@ -84,6 +87,6 @@ end
 at_exit do
   ActiveRecord::Base.connection.close
 end
-# crm = CRM.new
-#
-# crm.main_menu
+crm = CRM.new
+
+puts crm.main_menu
