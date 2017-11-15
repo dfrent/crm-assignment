@@ -59,7 +59,7 @@ def modify_existing_contact
     puts "what would you like to change the #{attribute} to?"
   new_value = gets.chomp
 
-  contact_being_modified.update(attribute, new_value)
+  contact_being_modified.update({attribute=> new_value})
 end
 
 def delete_contact
@@ -79,7 +79,7 @@ def search_by_attribute
   attribute = gets.chomp
     puts "enter the #{attribute} value"
   searched_value = gets.chomp
-  found_value = Contact.find_by(attribute, searched_value)
+  found_value = Contact.find_by({attribute=> searched_value})
     p found_value.inspect
 end
 
