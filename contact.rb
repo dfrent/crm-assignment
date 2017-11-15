@@ -6,57 +6,64 @@ ActiveRecord::Base.establish_connection(adapter: 'sqlite3', database: 'crm.sqlit
 
 
 
-class Contact
+class Contact < ActiveRecord::Base
 
-@@contacts =[]
-@@id = 1
+  field :first_name, as: :string
+    field :last_name,  as: :string
+    field :email,      as: :string
+    field :note,       as: :text
+
+
 
   # This method should initialize the contact's attributes
-  def initialize(first_name, last_name, email, notes)
-    @first_name = first_name
-    @last_name = last_name
-    @email = email
-    @notes = notes
-    @id = @@id
-    @@id += 1
-  end
+  # def initialize(first_name, last_name, email, notes)
+  #   # @first_name = first_name
+  #   # @last_name = last_name
+  #   # @email = email
+  #   # @notes = notes
+  #   # @id = @@id
+  #   # @@id += 1
+  # end
 
   # This method should call the initializer,
   # store the newly created contact, and then return it
-  def self.create(first_name, last_name, email, notes)
-    puts first_name
-    new_contact = Contact.new(first_name, last_name, email, notes)
-    @@contacts << new_contact
-    return new_contact
-  end
+  # def self.create(first_name, last_name, email, notes)
+  #   puts first_name
+  #   new_contact = Contact.new(first_name, last_name, email, notes)
+  #   @@contacts << new_contact
+  #   return new_contact
+  # end
 
-  def self.all
-    @@contacts
-  end
-
-  def first_name
-      @first_name
-  end
-
-    def first_name=(first_name)
-      @first_name = first_name
-    end
-
-    def last_name=(last_name)
-      @last_name = last_name
-    end
-
-    def email
-      @email
-    end
-
-    def notes
-      @notes
-    end
-
-    def id
-      @id
-    end
+  # def self.all
+  #   @@contacts
+  # end
+  #
+  # def first_name
+  #     @first_name
+  # end
+  # def last_name
+  # #     @last_name
+  # end
+  #
+  #   def first_name=(first_name)
+  #     @first_name = first_name
+  #   end
+  #
+  #   def last_name=(last_name)
+  #     @last_name = last_name
+  #   end
+  #
+  #   def email
+  #     @email
+  #   end
+  #
+  #   def notes
+  #     @notes
+  #   end
+  #
+  #   def id
+  #     @id
+  #   end
 
   # This method should return all of the existing contacts
   # This method should accept an id as an argument
@@ -122,7 +129,7 @@ class Contact
   end
 
 end
+Contact.auto_upgrade!
 
-
-cordell = Contact.new("cordell", "perry", "cordell.perry@gmail.com", '')
-puts cordell.inspect
+# cordell = Contact.new("cordell", "perry", "cordell.perry@gmail.com", '')
+# puts cordell.inspect
